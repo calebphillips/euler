@@ -5,5 +5,4 @@
   (map first (iterate (fn [[a b]] [b (+ b a)]) [0 1])))
 
 (defn euler-2 [n]
-  (reduce + (filter even? (take-while #(< % n) (fib))))
-  )
+  (reduce + (filter even? (take-while #(< % n) (fib)))))
