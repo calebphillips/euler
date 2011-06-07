@@ -1,7 +1,7 @@
 (ns euler.level1.problem003
   (:use [clojure.contrib.math :only [sqrt]]))
 
-(defn upto-half [n]
+(defn upto-sqrt [n]
   (range 2 (inc (sqrt n))))
 
 (defn divisible-by? [n]
@@ -11,10 +11,10 @@
 (defn prime? [n]
   (if (= n 2)
     true
-    (not-any? (divisible-by? n) (upto-half n))))
+    (not-any? (divisible-by? n) (upto-sqrt n))))
 
 (defn factors [n]
-  (filter (divisible-by? n) (upto-half n)))
+  (filter (divisible-by? n) (upto-sqrt n)))
 
 (defn euler-3 [n]
   (reduce max (filter prime? (factors n))))
