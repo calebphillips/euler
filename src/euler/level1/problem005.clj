@@ -10,5 +10,4 @@
   (first 
     (filter 
       #(divisible-by-every-number-upto % n)
-      (iterate #(+ n %) n))
-    ))
+      (iterate #(+ n %) n))))

@@ -1,20 +1,9 @@
 (ns euler.level1.problem003
-  (:use [clojure.contrib.math :only [sqrt]]))
-
-(defn upto-sqrt [n]
-  (range 2 (inc (sqrt n))))
-
-(defn divisible-by? [n]
-  (fn [d] 
-    (zero? (mod n d))))
-
-(defn prime? [n]
-  (if (= n 2)
-    true
-    (not-any? (divisible-by? n) (upto-sqrt n))))
+  (:use [clojure.contrib.math :only [sqrt]]
+        [euler.common :only [prime? divides? upto-sqrt]]))
 
 (defn factors [n]
-  (filter (divisible-by? n) (upto-sqrt n)))
+  (filter #(divides? n %) (upto-sqrt n)))
 
 (defn euler-3 [n]
   (reduce max (filter prime? (factors n))))

@@ -13,11 +13,5 @@
     )
   )
 
-(describe "is prime"
-          (it "handles primes"
-              (should= [] (remove prime? [1 2 3 5 7 11 13 17 19 23])))
-
-          (it "handles non-primes"
-              (should= [] (filter prime? [4 6 100 4000]))))
 
 (run-specs)
