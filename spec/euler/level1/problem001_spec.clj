@@ -5,14 +5,6 @@
 
 ; http://projecteuler.net/index.php?section=problems&id=1
 
-(describe "divides?"
-    (it "works"
-        (should (divides? 9 3))
-        (should (divides? 333 3))
-        (should-not (divides? 4 3))
-        (should (divides? 25 5))
-        (should-not (divides? 973 5))))
-
 (describe "divides-any?"
           (it "works"
               (should ((divides-any? 3 5) 9))

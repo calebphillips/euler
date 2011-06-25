@@ -1,7 +1,5 @@
-(ns euler.level1.problem005)
-
-(defn divides? [dividend divisor] 
-  (zero? (rem dividend divisor)))
+(ns euler.level1.problem005
+  (:use [euler.common :only [divides?]]))
 
 (defn divisible-by-every-number-upto [n max-divisor]
   (every? 
