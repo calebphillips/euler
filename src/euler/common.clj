@@ -11,3 +11,4 @@
   (if (= n 2)
     true
     (not-any? #(divides? n %) (upto-sqrt n))))
+
