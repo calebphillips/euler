@@ -9,7 +9,6 @@
 
   (it "Solves #16"
     (should= 26 (euler-16 15))
-    (should= 26 (euler-16 1000))
       )
   )
 
