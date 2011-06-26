@@ -12,3 +12,7 @@
     true
     (not-any? #(divides? n %) (upto-sqrt n))))
 
+(defn to-digits [n]
+  (map #(Integer/parseInt (str %)) 
+       (.toString n)))
+

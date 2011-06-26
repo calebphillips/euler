@@ -3,6 +3,12 @@
     [speclj.core]
     [euler.common]))
 
+(describe
+  "to-digits"
+  (it "turns an integer into a sequence of 1-digits integers"
+      (should= [1 2 3 4 5] (to-digits 12345))
+      (should= [9 8 9 8 1 1 1 5] (to-digits 98981115))))
+
 (describe 
   "divides?"
   (it "works"

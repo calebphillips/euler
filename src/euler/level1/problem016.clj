@@ -1,11 +1,9 @@
-(ns euler.level1.problem016)
+(ns euler.level1.problem016
+  (:use [euler.common :only [to-digits]]))
 
 (defn two-to-the [n] 
   (first (drop (dec n) (iterate #(* % 2) 2))))
 
-
 (defn euler-16 [n]
-  (reduce + 
-          (map #(Integer/parseInt (str %)) 
-               (.toString (two-to-the n))))
-  )
+  (reduce + (to-digits (two-to-the n))))
+  
