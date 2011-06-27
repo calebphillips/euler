@@ -43,24 +43,24 @@
       )
 
   (it "finds adjacent numbers on the horizontal"
-      (should= [2 22 97 38] (horizontal-from big-grid 1 0))
-      (should= [17 81 18 57] (horizontal-from big-grid 4 1))
-      (should= [89 19 67 48] (horizontal-from big-grid 16 19))
-      (should= [67 48] (horizontal-from big-grid 18 19))
+      (should= [2 22 97 38] (horizontal big-grid 1 0))
+      (should= [17 81 18 57] (horizontal big-grid 4 1))
+      (should= [89 19 67 48] (horizontal big-grid 16 19))
+      (should= [67 48] (horizontal big-grid 18 19))
       )
 
   (it "finds adjacent numbers on the vertical"
-      (should= [8 49 81 52] (vertical-from big-grid 0 0))
-      (should= [16 36 35 54] (vertical-from big-grid 2 16))
-      (should= [41 29 71] (vertical-from big-grid 3 17))
+      (should= [8 49 81 52] (vertical big-grid 0 0))
+      (should= [16 36 35 54] (vertical big-grid 2 16))
+      (should= [41 29 71] (vertical big-grid 3 17))
       )
 
   (it "finds adjacent numbers on the left to right diagonal"
-      (should= [8 49 31 23] (l-to-r-diagonal-from big-grid 0 0))
-      (should= [4 5 48] (l-to-r-diagonal-from big-grid 17 17)))
+      (should= [8 49 31 23] (l-to-r big-grid 0 0))
+      (should= [4 5 48] (l-to-r big-grid 17 17)))
 
   (it "finds adjacent numbers on the right to left diagonal"
-      (should= [40 31 70 22] (r-to-l-diagonal-from big-grid 3 1)))
+      (should= [40 31 70 22] (r-to-l big-grid 3 1)))
   )
 
 (run-specs)
