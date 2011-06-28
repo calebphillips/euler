@@ -3,6 +3,26 @@
     [speclj.core]
     [euler.common]))
 
+(describe 
+  "finding prime factorization"
+  (it "returns the factors and their exponents"
+      (should= [[2 2] [3 1]] (prime-factorization 12))
+      (should= [[3 1] [7 2]] (prime-factorization 147))
+      (should= [[17 1]] (prime-factorization 17))
+      )
+  )
+
+(describe 
+  "counting factors"
+  (it "returns the number of factors"
+      (should= 2 (count-factors 3))
+      (should= 4 (count-factors 6))
+      (should= 4 (count-factors 21))
+      (should= 6 (count-factors 28))
+      (should= 12 (count-factors 108))
+      )
+  )
+
 (describe
   "to-digits"
   (it "turns an integer into a sequence of 1-digits integers"
