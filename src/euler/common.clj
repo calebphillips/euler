@@ -17,20 +17,28 @@
   (map #(Integer/parseInt (str %)) 
        (.toString n)))
 
+(defn- prime-factors-with-exponents [n]
+  (loop [n n 
+         factors []
+         this-prime (first primes)
+         primes-left (rest primes)]
+    (if (= n 1)
+      factors
+      (if (divides? n this-prime)
+        (recur (quot n this-prime) 
+               (conj factors this-prime) 
+               this-prime 
+               primes-left)
+        (recur n 
+               factors 
+               (first primes-left) 
+               (rest primes-left))))))
+
 (defn prime-factorization [n]
   (map (fn [c] [(first c) (count c)])
        (partition-by identity
-                     (loop [n n 
-                            factors []
-                            this-prime 2
-                            primes-left (rest primes)]
-                       (if (= n 1)
-                         factors
-                         (if (divides? n this-prime)
-                           (recur (quot n this-prime) (conj factors this-prime) this-prime primes-left)
-                           (recur n factors (first primes-left) (rest primes-left))))
-                       )
-                     )))
+                     (prime-factors-with-exponents n))))
 
+; http://mathforum.org/library/drmath/view/57151.html
 (defn count-factors [n]
   (reduce * (map #(inc (second %)) (prime-factorization n))))
