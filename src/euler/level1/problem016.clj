@@ -1,9 +1,7 @@
 (ns euler.level1.problem016
-  (:use [euler.common :only [to-digits]]))
-
-(defn two-to-the [n] 
-  (first (drop (dec n) (iterate #(* % 2) 2))))
+  (:use [euler.common :only [to-digits]]
+        [clojure.contrib.math :only [expt]]))
 
 (defn euler-16 [n]
-  (reduce + (to-digits (two-to-the n))))
+  (reduce + (to-digits (expt 2 n))))
   

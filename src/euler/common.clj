@@ -34,3 +34,7 @@
 ; http://mathforum.org/library/drmath/view/57151.html
 (defn count-factors [n]
   (reduce * (map #(inc (second %)) (prime-factorization n))))
+
+(def fib 
+  (map second (iterate (fn [[a b]] [b (+ b a)]) [0 1])))
+

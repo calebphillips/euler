@@ -34,3 +34,16 @@
       (should-not (divides? 4 3))
       (should (divides? 25 5))
       (should-not (divides? 973 5))))
+
+(describe 
+  "fib"
+  (it "fibs"
+      (should= 1 (first fib))
+      (should= 1 (second fib))
+      (should= 2 (nth fib 2))
+      (should= 3 (nth fib 3))
+      (should= 5 (nth fib 4))
+      (should= 8 (nth fib 5))
+      (should= 144 (nth fib 11)) ))
+
+
