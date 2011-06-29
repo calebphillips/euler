@@ -26,5 +26,5 @@
 
 (defn euler-35 [n]
   (count
-    (take-while #(< % n)
-                (filter circular? primes))))
+    (filter circular? 
+            (take-while #(< % n) primes))))

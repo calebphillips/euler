@@ -39,22 +39,12 @@
   (map second (iterate (fn [[a b]] [b (+ b a)]) [0 1])))
 
 (defn prime? [n]
-    (= n 
-       (first (drop-while #(< % n) primes))))
-
-(defn fermat-test [n]
-  (let [a 2]
-    (= (rem (expt a n) n) a)
-    )
-  )
-
-(defn probably-prime? [n]
-  (loop [n n
-         times 2]
-    (cond (= 2 n) true
-          (= times 0) true
-          (fermat-test n) (recur n (dec times))
-          :else false))
-  )
+  (or 
+    (= n 2)
+    (and
+      (not (and (> n 10)
+                (#{0 2 4 5 6 8} (rem n 10))))
+      (not-any? #(divides? n %) 
+                (range 2 (inc (sqrt n)))))))
 
 
