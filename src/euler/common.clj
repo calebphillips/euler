@@ -1,5 +1,5 @@
 (ns euler.common
-  (:use [clojure.contrib.math :only [sqrt]]
+  (:use [clojure.contrib.math :only [sqrt expt]]
         [clojure.contrib.lazy-seqs :only [primes]]))
 
 (defn divides? [dividend divisor] 
@@ -37,4 +37,24 @@
 
 (def fib 
   (map second (iterate (fn [[a b]] [b (+ b a)]) [0 1])))
+
+(defn prime? [n]
+    (= n 
+       (first (drop-while #(< % n) primes))))
+
+(defn fermat-test [n]
+  (let [a 2]
+    (= (rem (expt a n) n) a)
+    )
+  )
+
+(defn probably-prime? [n]
+  (loop [n n
+         times 2]
+    (cond (= 2 n) true
+          (= times 0) true
+          (fermat-test n) (recur n (dec times))
+          :else false))
+  )
+
 

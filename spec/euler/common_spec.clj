@@ -47,3 +47,13 @@
       (should= 144 (nth fib 11)) ))
 
 
+(describe 
+  "detecting primes"
+  (it "has a deterministic method"
+      (let [expected-primes [2 3 5 7 11 13 17 19 23 29 
+                             104677 104681 104683 104693 104701 
+                             104707 104711 104717 104723 104729]]
+        (should= expected-primes (filter prime? expected-primes)))
+      (should= [] (filter prime? [4 6 8 9 10 12 15 100 99 104728])))
+  )
+

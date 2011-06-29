@@ -1,7 +1,7 @@
 (ns euler.level2.problem035
   (:use [clojure.contrib.lazy-seqs :only [primes]]
         [clojure.contrib.math :only [sqrt]]
-        [euler.common :only [to-digits divides?]] ))
+        [euler.common :only [prime?]] ))
 
 (defn rotate [s]
   (apply str 
@@ -20,12 +20,6 @@
           this-rot
           (dec rots-remaining))))))
 
-
-(defn prime? [n]
-    (= n 
-       (first (drop-while #(< % n) primes))))
-
-
 (defn circular? [n]
   (every? prime? (map #(Integer/parseInt %)
                       (rotations (str n)))))
@@ -33,5 +27,4 @@
 (defn euler-35 [n]
   (count
     (take-while #(< % n)
-                (filter circular? primes)))
-  )
+                (filter circular? primes))))
