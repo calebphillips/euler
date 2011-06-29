@@ -9,7 +9,7 @@
 
   (it "Solves #48"
     (should= "71317" (euler-48 10 5))
-    (should= "71317" (euler-48 1000 10))
+    (should= "9110846700" (euler-48 1000 10))
       )
   )
 
