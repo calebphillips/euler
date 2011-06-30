@@ -2,11 +2,12 @@
   (:use [clojure.contrib.math :only [expt]]
         [euler.common :only [to-digits]]))
 
-(defn euler-48 [n last-n]
+(defn euler-48 
+  "Find the last ten digits of the series, 1^1 + 2^2 + 3^3 + ... + 1000^1000"
+  [n last-n]
   (apply str
          (take-last last-n
                     (to-digits
                       (reduce +
-                              (for [x (range 1 (inc n))]
-                                (expt x x))))))
+                              (map #(expt % %) (range 1 (inc n)))))))
   )
