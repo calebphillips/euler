@@ -9,7 +9,7 @@
   (map #(Integer/parseInt (str %)) 
        (.toString n)))
 
-(defn- prime-factors-with-exponents [n]
+(defn prime-factors [n]
   (loop [n n 
          factors []
          this-prime (first primes)
@@ -29,7 +29,7 @@
 (defn prime-factorization [n]
   (map (fn [c] [(first c) (count c)])
        (partition-by identity
-                     (prime-factors-with-exponents n))))
+                     (prime-factors n))))
 
 ; http://mathforum.org/library/drmath/view/57151.html
 (defn count-factors [n]

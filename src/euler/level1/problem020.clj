@@ -7,6 +7,7 @@
       acc
       (recur (dec n) (* acc n)))))
 
-(defn euler-20 [n]
-  (reduce + (to-digits (factorial n)))
-  )
+(defn euler-20 
+  "Returns the sum of the digits in the number 100!"
+  [n]
+  (reduce + (to-digits (factorial n))))

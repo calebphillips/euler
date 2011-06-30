@@ -8,10 +8,11 @@
       (should= [[2 2] [3 1]] (prime-factorization 12))
       (should= [[3 1] [7 2]] (prime-factorization 147))
       (should= [[17 1]] (prime-factorization 17))
+      (should= [[2 2] [3 1] [8741 1]] (prime-factorization 104892))
       ))
 
 (describe 
-  "counting factors"
+  "count-factors"
   (it "returns the number of factors"
       (should= 2 (count-factors 3))
       (should= 4 (count-factors 6))
@@ -22,13 +23,13 @@
 
 (describe
   "to-digits"
-  (it "turns an integer into a sequence of 1-digits integers"
+  (it "turns an integer into a sequence of 1-digit integers"
       (should= [1 2 3 4 5] (to-digits 12345))
       (should= [9 8 9 8 1 1 1 5] (to-digits 98981115))))
 
 (describe 
   "divides?"
-  (it "works"
+  (it "returns true if the second arg evenly divides the first"
       (should (divides? 9 3))
       (should (divides? 333 3))
       (should-not (divides? 4 3))
@@ -37,7 +38,7 @@
 
 (describe 
   "fib"
-  (it "fibs"
+  (it "generates a lazy sequence of the fibonacci numbers"
       (should= 1 (first fib))
       (should= 1 (second fib))
       (should= 2 (nth fib 2))
