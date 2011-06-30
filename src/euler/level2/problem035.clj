@@ -9,10 +9,13 @@
   (take (count s) (iterate rotate s)))
 
 (defn circular? [n]
-  (every? prime? (map #(Integer/parseInt %)
-                      (rotations (str n)))))
+  (every? prime? 
+          (map #(Integer/parseInt %)
+               (rotations (str n)))))
 
-(defn euler-35 [n]
+(defn euler-35 
+  "Returns the number of circurlar primes less than n"
+  [n]
   (count
     (filter circular? 
             (take-while #(< % n) primes))))
