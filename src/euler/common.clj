@@ -5,26 +5,21 @@
 (defn divides? [dividend divisor] 
   (zero? (rem dividend divisor)))
 
+(defn parse-int [n]
+  (Integer/parseInt n))
+
 (defn to-digits [n]
-  (map #(Integer/parseInt (str %)) 
-       (.toString n)))
+  (map #(parse-int (str %)) (.toString n)))
 
 (defn prime-factors [n]
   (loop [n n 
-         factors []
-         this-prime (first primes)
-         primes-left (rest primes)]
+         [this-prime & next-primes :as current-primes] primes
+         factors []]
     (if (= n 1)
       factors
       (if (divides? n this-prime)
-        (recur (quot n this-prime) 
-               (conj factors this-prime) 
-               this-prime 
-               primes-left)
-        (recur n 
-               factors 
-               (first primes-left) 
-               (rest primes-left))))))
+        (recur (quot n this-prime) current-primes (conj factors this-prime))
+        (recur n next-primes factors)))))
 
 (defn prime-factorization [n]
   (map (fn [c] [(first c) (count c)])
@@ -46,7 +41,4 @@
                 (#{0 2 4 5 6 8} (rem n 10))))
       (not-any? #(divides? n %) 
                 (range 2 (inc (sqrt n)))))))
-
-(defn parse-int [n]
-  (Integer/parseInt n))
 
