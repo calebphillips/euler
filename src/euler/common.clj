@@ -47,4 +47,6 @@
       (not-any? #(divides? n %) 
                 (range 2 (inc (sqrt n)))))))
 
+(defn parse-int [n]
+  (Integer/parseInt n))
 

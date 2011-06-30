@@ -1,6 +1,6 @@
 (ns euler.level2.problem035
   (:use [clojure.contrib.lazy-seqs :only [primes]]
-        [euler.common :only [prime?]] ))
+        [euler.common :only [prime? parse-int]] ))
 
 (defn rotate [[h & t]]
   (apply str (concat t [h])))
@@ -10,7 +10,7 @@
 
 (defn circular? [n]
   (every? prime? 
-          (map #(Integer/parseInt %)
+          (map parse-int
                (rotations (str n)))))
 
 (defn euler-35 
