@@ -1,24 +1,12 @@
 (ns euler.level2.problem035
   (:use [clojure.contrib.lazy-seqs :only [primes]]
-        [clojure.contrib.math :only [sqrt]]
         [euler.common :only [prime?]] ))
 
-(defn rotate [s]
-  (apply str 
-         (flatten (cons (rest s) 
-                        (list (first s))))))
+(defn rotate [[h & t]]
+  (apply str (concat t [h])))
 
 (defn rotations [s]
-  (loop [all-rots [s]
-         current-rot s
-         rots-remaining (dec (count s))]
-    (if (zero? rots-remaining)
-      all-rots
-      (let [this-rot (rotate current-rot)]
-        (recur 
-          (conj all-rots this-rot)
-          this-rot
-          (dec rots-remaining))))))
+  (take (count s) (iterate rotate s)))
 
 (defn circular? [n]
   (every? prime? (map #(Integer/parseInt %)

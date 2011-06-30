@@ -25,5 +25,11 @@
       (should= ["1234" "2341" "3412" "4123"] (rotations "1234"))
       (should= ["197" "971" "719"] (rotations "197"))
       )
+
+  (it "rotates a string"
+      (should= "alebC" (rotate "Caleb"))
+      (should= "23451" (rotate "12345"))
+      (should= "12345" (rotate "51234"))
+      )
   )
 (run-specs)
